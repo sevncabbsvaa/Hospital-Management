@@ -1,0 +1,70 @@
+.view-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.view-modal {
+  background: white;
+  width: 480px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.25s ease;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .details {
+    margin-bottom: 25px;
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #eeeeee;
+
+      .label {
+        font-weight: 600;
+        color: #444;
+      }
+
+      .value {
+        color: #333;
+      }
+    }
+  }
+
+  .close-btn {
+    width: 100%;
+    padding: 12px;
+    background: #0d99ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+
+    &:hover {
+      background: #067bd1;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

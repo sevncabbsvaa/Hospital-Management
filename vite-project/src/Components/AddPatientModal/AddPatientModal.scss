@@ -1,0 +1,101 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.modal {
+  background: white;
+  width: 450px;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.25s ease;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+
+      &:focus {
+        outline: none;
+        border-color: #1677ff;
+      }
+    }
+  }
+
+  .error {
+    color: red;
+    margin-bottom: 10px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    button {
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .cancel {
+      background: #f2f2f2;
+
+      &:hover {
+        background: #e2e2e2;
+      }
+    }
+
+    .submit {
+      background: #1677ff;
+      color: #fff;
+
+      &:hover {
+        background: #0f5fcc;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

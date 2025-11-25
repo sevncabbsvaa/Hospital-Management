@@ -27,7 +27,7 @@ export default function Login() {
       localStorage.setItem("token", response.token);
 
       // redirect
-      window.location.href = "/dashboard";
+      window.location.href = "/main/patients";
 
     } catch (err) {
       setError(err.message || "Invalid credentials.");

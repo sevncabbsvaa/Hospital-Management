@@ -1,0 +1,93 @@
+.sidebar {
+width: 250px;
+height: 100vh;
+background: #ffffff;
+border-right: 1px solid #eaecef;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+padding: 25px 20px;
+box-sizing: border-box;
+
+.sidebar-header {
+display: flex;
+gap: 10px;
+align-items: center;
+margin-bottom: 35px;
+
+
+.logo img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.clinic-info {
+  display: flex;
+  flex-direction: column;
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+  }
+  span {
+    font-size: 12px;
+    color: #8e9bb4;
+  }
+}
+
+}
+
+.sidebar-menu {
+display: flex;
+flex-direction: column;
+gap: 12px;
+
+
+a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #344054;
+  font-weight: 500;
+  transition: 0.2s;
+
+  &:hover {
+    background: #f3f6fb;
+  }
+
+  &.active {
+    background: #e6ecf8;
+    color: #2d4af0;
+  }
+}
+
+}
+
+.sidebar-logout {
+display: flex;
+justify-content: flex-start;
+
+button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  color: #d82a2a;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 8px;
+  transition: 0.2s;
+
+  &:hover {
+    background: #fce7e7;
+  }
+}
+
+}
+}

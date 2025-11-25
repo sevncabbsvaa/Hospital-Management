@@ -1,16 +1,19 @@
-import axios from "axios";
+export const loginUser = async (credentials) => {
+  const response = await fetch(
+    "https://hpis-api.up.railway.app/api/Auth/login",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(credentials),
+    }
+  );
 
-const API = "https://your-api-url.com/api/auth";
-
-export const loginUser = async ({ username, password }) => {
-  try {
-    const res = await axios.post(`${API}/login`, {
-      username,
-      password,
-    });
-
-    return res.data;
-  } catch (err) {
-    throw new Error(err.response?.data?.message || "Login failed");
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(errorText || "Login failed");
   }
+
+  return await response.json();
 };
