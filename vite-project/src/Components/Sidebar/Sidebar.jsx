@@ -29,17 +29,17 @@ return ( <div className="sidebar">
       Dashboard
     </NavLink>
 
-    <NavLink to="/patients">
+    <NavLink to="/main/patients">
       <FiUsers size={18} />
       Patients
     </NavLink>
 
-    <NavLink to="/doctors">
+    <NavLink to="/main/doctors">
       <FiUserCheck size={18} />
       Doctors
     </NavLink>
 
-    <NavLink to="/appointments">
+    <NavLink to="/main/appointments">
       <FiCalendar size={18} />
       Appointments
     </NavLink>

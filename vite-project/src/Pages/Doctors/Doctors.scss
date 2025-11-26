@@ -1,0 +1,80 @@
+.doctors-page {
+  padding: 20px;
+}
+
+.head-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-btn {
+  background: #2f80ed;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-box input {
+  width: 300px;
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.doctors-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.doctors-table th,
+.doctors-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit,
+.delete {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.delete {
+  color: #d9534f;
+}
+
+.active {
+  color: green;
+  font-weight: 600;
+}
+
+.inactive {
+  color: #777;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  gap: 6px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 4px;
+}
+
+.active-page {
+  background: #2f80ed !important;
+  color: white !important;
+}

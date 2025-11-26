@@ -1,0 +1,85 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.modal {
+  width: 450px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  animation: fadeIn 0.2s ease;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+
+    label {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      font-size: 15px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+
+      &:focus {
+        outline: none;
+        border-color: #0d99ff;
+      }
+    }
+  }
+
+  .error {
+    color: red;
+    margin-bottom: 12px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    button {
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cancel {
+      background: #e9e9e9;
+    }
+
+    .submit {
+      background: #0d99ff;
+      color: white;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
