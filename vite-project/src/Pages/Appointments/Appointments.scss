@@ -1,0 +1,46 @@
+.appointments-page {
+  display: flex;
+  gap: 30px;
+  padding: 25px;
+
+  .left {
+    flex: 1.2;
+  }
+
+  .right {
+    flex: 1;
+  }
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    background: #f7f7f7;
+    cursor: pointer;
+
+    &.active {
+      background: #2563eb;
+      color: #fff;
+      border-color: #2563eb;
+    }
+  }
+
+  .search-input {
+    margin-left: auto;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+  }
+}
