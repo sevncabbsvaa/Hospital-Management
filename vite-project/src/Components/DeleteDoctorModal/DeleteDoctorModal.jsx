@@ -1,11 +1,16 @@
 import "./DeleteDoctorModal.scss";
 import { deleteDoctor } from "../../Services/doctorsService";
+import { useState } from "react";
+
 
 export default function DeleteDoctorModal({ open, onClose, doctor, onSuccess }) {
+  const [, setLoading] = useState(false);
+
   if (!open || !doctor) return null;
 
   const handleDelete = async () => {
     try {
+      setLoading(true);
       await deleteDoctor(doctor.id);
       onSuccess();
       onClose();

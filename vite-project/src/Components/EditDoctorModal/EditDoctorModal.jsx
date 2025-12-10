@@ -30,7 +30,7 @@ export default function EditDoctorModal({ open, onClose, doctorId, onSuccess }) 
       setForm({
         id: data.id,
         username: data.userName,
-        password: "", // backend tələb edirsə boş saxlanır
+        password: "", 
         name: data.name,
         specialty: data.specialty,
         phoneNumber: data.phoneNumber,
@@ -39,7 +39,6 @@ export default function EditDoctorModal({ open, onClose, doctorId, onSuccess }) 
       });
     } catch (err) {
       console.error(err);
-      setError("Məlumat yüklənmədi.");
     } finally {
       setFetching(false);
     }
@@ -55,25 +54,16 @@ export default function EditDoctorModal({ open, onClose, doctorId, onSuccess }) 
   setError("");
 
   try {
-    const body = {
-      name: form.name,
-      specialty: form.specialty,
-      phoneNumber: form.phoneNumber,
-      email: form.email,
-      isActive: form.isActive === "Active" ? true : false 
-    };
-
-    await updateDoctor(doctorId, body);
-
+    await updateDoctor(doctorId, form);
     onSuccess();
     onClose();
-
   } catch (err) {
-    console.log(err);
+    console.error(err);
     setError("Xəta baş verdi. Yenidən cəhd edin.");
   } finally {
     setLoading(false);
   }
+
 };
 
 

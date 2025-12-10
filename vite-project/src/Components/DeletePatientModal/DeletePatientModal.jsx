@@ -8,11 +8,11 @@ export default function DeletePatientModal({ open, onClose, onSuccess, patient }
   if (!open || !patient) return null;
 
   const handleDelete = async () => {
-    try {
+    try { 
       setLoading(true);
       await deletePatient(patient.id);
-      onSuccess();   // refresh patients
-      onClose();     // close modal
+      onSuccess();   
+      onClose();     
     } catch (err) {
       console.error("Delete failed:", err);
     } finally {

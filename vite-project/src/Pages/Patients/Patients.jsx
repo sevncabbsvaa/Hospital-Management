@@ -55,20 +55,20 @@ export default function Patients() {
     }
   };
 
- const handleSearch = (value) => {
-  setSearch(value);
+  const handleSearch = (value) => {
+    setSearch(value);
 
-  if (value.trim() === "") {
-    setFiltered(patients);
-  } else {
-    const results = patients.filter((p) =>
-      p.name.toLowerCase().includes(value.toLowerCase())
-    );
-    setFiltered(results);
-  }
+    if (value.trim() === "") {
+      setFiltered(patients);
+    } else {
+      const results = patients.filter((p) =>
+        p.name.toLowerCase().includes(value.toLowerCase())
+      );
+      setFiltered(results);
+    }
 
-  setPage(1);
-};
+    setPage(1);
+  };
 
 const totalPages = Math.ceil(filtered.length / limit);
 const paginated = filtered.slice((page - 1) * limit, page * limit);

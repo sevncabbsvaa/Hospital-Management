@@ -59,8 +59,15 @@ export const updateDoctor = async (id, data) => {
   });
 
   if (!res.ok) throw new Error("Failed to update doctor");
-  return await res.json();
+
+  if (res.status === 204) return;
+
+  const text = await res.text();
+  if (!text) return;
+
+  return JSON.parse(text);
 };
+
 
 // DELETE
 export const deleteDoctor = async (id) => {

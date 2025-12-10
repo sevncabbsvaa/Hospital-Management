@@ -1,6 +1,9 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState,  } from "react";
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import "./Doctors.scss";
+import AddDoctorModal from "../../Components/AddDoctorModal/AddDoctorModal";
+import DeleteDoctorModal from "../../Components/DeleteDoctorModal/DeleteDoctorModal";
+import EditDoctorModal from "../../Components/EditDoctorModal/EditDoctorModal";
 
 
 export default function Doctors() {
@@ -11,6 +14,13 @@ export default function Doctors() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const [addOpen, setAddOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+
+  const [editOpen, setEditOpen] = useState(false);
+  const [editId, setEditId] = useState(null);
+
   const [page, setPage] = useState(1);
   const limit = 5;
 
@@ -18,10 +28,6 @@ export default function Doctors() {
   const paginated = filtered.slice((page - 1) * limit, page * limit);
 
     const token = localStorage.getItem("token");
-
-    console.log("TOKEN:", token);
-    console.log("TOKEN LENGTH:", token?.length);
-
 
 
   useEffect(() => {
@@ -50,15 +56,24 @@ export default function Doctors() {
     }
   };
 
+  const handleSearch =(value) => {
+    setSearch(value);
 
+    if (value.trim() === "") {
+      setFiltered(doctors);
+    } else {
+      const results = doctors.filter((doc)=> doc.name.toLowerCase().includes(value.toLowerCase()));
+      setFiltered(results);
+    }
+    setPage(1);
+  }
 
   return (
     <div className="doctors-page">
       
-      {/* HEADER */}
       <div className="head-row">
         <h2>Doctors</h2>
-        <button className="add-btn">+ Add Doctor</button>
+        <button className="add-btn" onClick={() => setAddOpen(true)}>+ Add Doctor</button>
       </div>
 
       <p className="subtext">Manage doctor profiles and schedules</p>
@@ -69,7 +84,7 @@ export default function Doctors() {
           type="text"
           placeholder="Search by name or specialty..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => handleSearch(e.target.value)}
         />
       </div>
 
@@ -107,9 +122,17 @@ export default function Doctors() {
                         )}
                     </td>
                     <td className="actions">
-                        <FiEdit2 className="edit" />
+                        <FiEdit2 className="edit"
+                        onClick={() => {
+                          setEditId(doc.id);
+                          setEditOpen(true);
+                        }}
+                        />
                         <FiTrash2
                         className="delete"
+                        onClick={() => {setSelectedDoctor(doc);
+                          setDeleteOpen(true);
+                        }}
                         />
                     </td>
                     </tr>
@@ -156,6 +179,26 @@ export default function Doctors() {
           Next
         </button>
       </div>
+
+      <AddDoctorModal 
+        open={addOpen}
+        onClose={()=> setAddOpen(false)}
+        onSuccess={fetchDoctors}
+      />
+
+      <DeleteDoctorModal 
+      open={deleteOpen}
+      onClose={() => setDeleteOpen(false)}
+      onSuccess={fetchDoctors}
+      doctor={selectedDoctor}
+      />
+
+      <EditDoctorModal
+      open={editOpen}
+      onClose={()=> setEditOpen(false)}
+      doctorId={editId}
+      onSuccess={fetchDoctors}
+      />
     </div>
   );
 }

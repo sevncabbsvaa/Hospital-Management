@@ -19,8 +19,7 @@ export default function AddDoctorModal({ open, onClose, onSuccess }) {
   if (!open) return null;
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -29,9 +28,19 @@ export default function AddDoctorModal({ open, onClose, onSuccess }) {
     setError("");
 
     try {
-      await addDoctor(form);
-      onSuccess();
-      onClose();
+      await addDoctor({
+        username: form.username,
+        password: form.password,
+        name: form.name,
+        specialty: form.specialty,
+        phoneNumber: form.phoneNumber,
+        email: form.email,
+        isActive: form.isActive
+      });
+
+      onSuccess();     
+      onClose();        
+
     } catch (err) {
       setError("Xəta baş verdi. Yenidən cəhd edin.");
     } finally {
@@ -42,8 +51,7 @@ export default function AddDoctorModal({ open, onClose, onSuccess }) {
   return (
     <div className="modal-overlay">
       <div className="modal">
-
-        <h2>Add Doctor</h2>
+        <h2>Add Patient</h2>
 
         <form onSubmit={handleSubmit}>
 
@@ -61,7 +69,7 @@ export default function AddDoctorModal({ open, onClose, onSuccess }) {
             <label>Password</label>
             <input
               name="password"
-              type="password"
+              type="psddword"
               value={form.password}
               onChange={handleChange}
               required
@@ -79,7 +87,7 @@ export default function AddDoctorModal({ open, onClose, onSuccess }) {
           </div>
 
           <div className="form-group">
-            <label>Specialty</label>
+            <label>Speciality</label>
             <input
               name="specialty"
               value={form.specialty}
@@ -105,22 +113,16 @@ export default function AddDoctorModal({ open, onClose, onSuccess }) {
               type="email"
               value={form.email}
               onChange={handleChange}
-              required
             />
           </div>
 
           <div className="form-group">
-            <label>Status</label>
-            <select
+            <label>Activity</label>
+            <input
               name="isActive"
               value={form.isActive}
-              onChange={(e) =>
-                setForm({ ...form, isActive: e.target.value === "true" })
-              }
-            >
-              <option value="true">Active</option>
-              <option value="false">Inactive</option>
-            </select>
+              onChange={handleChange}
+            />
           </div>
 
           {error && <p className="error">{error}</p>}
@@ -129,13 +131,12 @@ export default function AddDoctorModal({ open, onClose, onSuccess }) {
             <button type="button" className="cancel" onClick={onClose}>
               Cancel
             </button>
-
             <button type="submit" className="submit" disabled={loading}>
-              {loading ? "Adding..." : "Add"}
+              {loading ? "Loading..." : "Add"}
             </button>
           </div>
-        </form>
 
+        </form>
       </div>
     </div>
   );

@@ -36,8 +36,8 @@ export default function AddPatientModal({ open, onClose, onSuccess }) {
         address: form.address
       });
 
-      onSuccess();      // Patients list refresh
-      onClose();        // Modal close
+      onSuccess();     
+      onClose();        
 
     } catch (err) {
       setError("Xəta baş verdi. Yenidən cəhd edin.");
